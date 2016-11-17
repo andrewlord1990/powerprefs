@@ -1,29 +1,37 @@
 ﻿namespace PowerPrefs {
   public class PowerPrefs {
-
-    private static readonly PowerPrefsAccessor<bool> BoolAccessor = 
-        new PowerPrefsAccessor<bool>(new BoolPrefAccessor());
-    private static readonly PowerPrefsAccessor<float> FloatAccessor = 
-        new PowerPrefsAccessor<float>(new FloatPrefAccessor());
-    private static readonly PowerPrefsAccessor<int> IntAccessor = 
-        new PowerPrefsAccessor<int>(new IntPrefAccessor());
-    private static readonly PowerPrefsAccessor<string> StringAccessor = 
-        new PowerPrefsAccessor<string>(new StringPrefAccessor());
+    
+    private static PowerPrefsAccessor<bool> boolAccessor;
+    private static PowerPrefsAccessor<float> floatAccessor;
+    private static PowerPrefsAccessor<int> intAccessor;
+    private static PowerPrefsAccessor<string> stringAccessor;
 
     public static PowerPrefsAccessor<bool> ForBool() {
-      return BoolAccessor;
+      if (boolAccessor == null) {
+        boolAccessor = new PowerPrefsAccessor<bool>(new BoolPrefAccessor());
+      }
+      return boolAccessor;
     }
 
     public static PowerPrefsAccessor<float> ForFloat() {
-      return FloatAccessor;
+      if (floatAccessor == null) {
+        floatAccessor = new PowerPrefsAccessor<float>(new FloatPrefAccessor());
+      }
+      return floatAccessor;
     }
 
     public static PowerPrefsAccessor<int> ForInt() {
-      return IntAccessor;
+      if (intAccessor == null) {
+        intAccessor = new PowerPrefsAccessor<int>(new IntPrefAccessor());
+      }
+      return intAccessor;
     }
 
     public static PowerPrefsAccessor<string> ForString() {
-      return StringAccessor;
+      if (stringAccessor == null) {
+        stringAccessor = new PowerPrefsAccessor<string>(new StringPrefAccessor());
+      }
+      return stringAccessor;
     }
     
   }
