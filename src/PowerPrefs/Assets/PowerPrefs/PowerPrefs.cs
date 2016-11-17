@@ -8,6 +8,7 @@
     private static PowerPrefsAccessor<float> floatAccessor;
     private static PowerPrefsAccessor<int> intAccessor;
     private static PowerPrefsAccessor<string> stringAccessor;
+    private static PowerPrefsAccessor<char> charAccessor;
 
     /// <summary>
     /// Create a PlayerPrefs accessor to read and write bool type values.
@@ -51,6 +52,17 @@
         stringAccessor = new PowerPrefsAccessor<string>(new StringPrefAccessor());
       }
       return stringAccessor;
+    }
+
+    /// <summary>
+    /// Create a PlayerPrefs accessor to read and write char type values.
+    /// </summary>
+    /// <returns>Char prefs accessor</returns>
+    public static PowerPrefsAccessor<char> ForChar() {
+      if (charAccessor == null) {
+        charAccessor = new PowerPrefsAccessor<char>(new CharPrefAccessor());
+      }
+      return charAccessor;
     }
     
   }

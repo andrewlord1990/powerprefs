@@ -79,14 +79,34 @@ namespace PowerPrefs.UnitTests {
 			Assert.That(actual, Is.EqualTo(expected));
 		}
 
-    [Test]
+		[Test]
 		public void GivenForString_WhenSet_ThenStringStored() {
-      string expected = "someNewValue";
+			string expected = "someNewValue";
 			PlayerPrefs.SetString(TestKey, "someOldValue");
 
       PowerPrefs.ForString().Set(TestKey, expected);
 
       Assert.That(PlayerPrefs.GetString(TestKey, ""), Is.EqualTo(expected));
+		}
+
+		[Test]
+		public void GivenForChar_WhenGet_ThenCharRetrieved() {
+      char expected = 'd';
+			PlayerPrefs.SetString(TestKey, expected.ToString());
+
+			char actual = PowerPrefs.ForChar().Get(TestKey, 'x');
+
+			Assert.That(actual, Is.EqualTo(expected));
+		}
+
+    [Test]
+		public void GivenForChar_WhenSet_ThenCharStoredAsString() {
+			char expected = 'a';
+			PlayerPrefs.SetString(TestKey, "someOldValue");
+
+      PowerPrefs.ForChar().Set(TestKey, expected);
+
+      Assert.That(PlayerPrefs.GetString(TestKey, "")[0], Is.EqualTo(expected));
 		}
 
 	}
