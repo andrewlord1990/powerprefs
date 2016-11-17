@@ -55,23 +55,23 @@ namespace PowerPrefs.UnitTests {
 		}
 
     [Test]
-		public void GivenValueStoredWithOldKey_WhenMoveKeys_ThenValueStoredWithNewKey() {
+		public void GivenValueStoredWithOldKey_WhenMigrateKey_ThenValueStoredWithNewKey() {
 			int expected = 99;
 			string oldKey = "oldKey";
 			PlayerPrefs.SetInt(oldKey, expected);
 
-      powerPrefsAccessor.MoveKeys(oldKey, TestKey);
+      powerPrefsAccessor.MigrateKey(oldKey, TestKey);
 
       Assert.That(PlayerPrefs.GetInt(TestKey, -1), Is.EqualTo(expected));
 		}
 
     [Test]
-		public void GivenValueStoredWithOldKey_WhenMoveKeys_ThenOldKeyDeleted() {
+		public void GivenValueStoredWithOldKey_WhenMigrateKey_ThenOldKeyDeleted() {
 			int expected = 99;
 			string oldKey = "oldKey";
 			PlayerPrefs.SetInt(oldKey, expected);
 
-      powerPrefsAccessor.MoveKeys(oldKey, TestKey);
+      powerPrefsAccessor.MigrateKey(oldKey, TestKey);
 
       Assert.That(PlayerPrefs.HasKey(oldKey), Is.False);
 		}
