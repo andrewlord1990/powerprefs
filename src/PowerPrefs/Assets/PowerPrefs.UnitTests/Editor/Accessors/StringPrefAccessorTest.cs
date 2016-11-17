@@ -47,6 +47,7 @@ namespace PowerPrefs.UnitTests {
     [Test]
     public void WhenSet_ThenValueStored() {
       string expected = "someValue";
+      
       accessor.Set(TestKey, expected);
 
       Assert.That(PlayerPrefs.GetString(TestKey, ""), Is.EqualTo(expected));

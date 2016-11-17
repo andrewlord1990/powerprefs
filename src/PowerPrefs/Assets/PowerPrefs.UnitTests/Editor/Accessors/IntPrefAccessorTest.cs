@@ -47,6 +47,7 @@ namespace PowerPrefs.UnitTests {
     [Test]
     public void WhenSet_ThenValueStored() {
       int expected = 10;
+      
       accessor.Set(TestKey, expected);
 
       Assert.That(PlayerPrefs.GetInt(TestKey, 100), Is.EqualTo(expected));
