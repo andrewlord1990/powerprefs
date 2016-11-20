@@ -12,10 +12,10 @@ namespace PowerPrefs {
     /// </summary>
     /// <param name="prefKey">The key to retrieve the value for.</param>
     /// <param name="defaultValue">
-    /// The default value to return if the key doesn't exist. If not specified it will be false.
+    /// The default value to return if the key doesn't exist. If not specified it will be the built-in default.
     /// </param>
-    /// <returns>The bool value stored at the key prefKey or if not present then false.</returns>
-    public bool Get(string prefKey, bool defaultValue = false) {
+    /// <returns>The bool value stored at the key prefKey or if not present then the built-in default.</returns>
+    public bool Get(string prefKey, bool defaultValue = default(bool)) {
         int prefValue = PlayerPrefs.GetInt(prefKey, boolToInt(defaultValue));
         return prefValue == 1 ? true : false;
     }
