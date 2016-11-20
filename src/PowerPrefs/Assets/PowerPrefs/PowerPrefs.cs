@@ -1,14 +1,20 @@
 ﻿namespace PowerPrefs {
+
+  using System;
+
   /// <summary>
   /// Read and write values of various different types to PlayerPrefs easily.
   /// </summary>
   public class PowerPrefs {
-    
+
     private static PowerPrefsAccessor<bool> boolAccessor;
     private static PowerPrefsAccessor<float> floatAccessor;
     private static PowerPrefsAccessor<int> intAccessor;
     private static PowerPrefsAccessor<string> stringAccessor;
     private static PowerPrefsAccessor<char> charAccessor;
+    private static PowerPrefsAccessor<double> doubleAccessor;
+    private static PowerPrefsAccessor<long> longAccessor;
+    private static PowerPrefsAccessor<DateTime> dateTimeAccessor;
 
     /// <summary>
     /// Create a PlayerPrefs accessor to read and write bool type values.
@@ -64,6 +70,38 @@
       }
       return charAccessor;
     }
-    
+
+    /// <summary>
+    /// Create a PlayerPrefs accessor to read and write double type values.
+    /// </summary>
+    /// <returns>Double prefs accessor</returns>
+    public static PowerPrefsAccessor<double> ForDouble() {
+      if (doubleAccessor == null) {
+        doubleAccessor = new PowerPrefsAccessor<double>(new DoublePrefAccessor());
+      }
+      return doubleAccessor;
+    }
+
+    /// <summary>
+    /// Create a PlayerPrefs accessor to read and write long type values.
+    /// </summary>
+    /// <returns>Long prefs accessor</returns>
+    public static PowerPrefsAccessor<long> ForLong() {
+      if (longAccessor == null) {
+        longAccessor = new PowerPrefsAccessor<long>(new LongPrefAccessor());
+      }
+      return longAccessor;
+    }
+
+    /// <summary>
+    /// Create a PlayerPrefs accessor to read and write DateTime type values.
+    /// </summary>
+    /// <returns>DateTime prefs accessor</returns>
+    public static PowerPrefsAccessor<DateTime> ForDateTime() {
+      if (dateTimeAccessor == null) {
+        dateTimeAccessor = new PowerPrefsAccessor<DateTime>(new DateTimePrefAccessor());
+      }
+      return dateTimeAccessor;
+    }
   }
 }
