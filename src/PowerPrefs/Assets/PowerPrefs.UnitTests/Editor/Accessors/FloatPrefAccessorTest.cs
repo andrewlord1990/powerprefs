@@ -1,7 +1,8 @@
-using UnityEngine;
-using NUnit.Framework;
-
 namespace PowerPrefs.UnitTests {
+
+  using UnityEngine;
+  using NUnit.Framework;
+
   public class FloatPrefAccessorTest {
 
     private static readonly string TestKey = "someTestKey";
