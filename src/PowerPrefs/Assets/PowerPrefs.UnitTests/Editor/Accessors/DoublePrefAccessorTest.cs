@@ -2,7 +2,7 @@ using UnityEngine;
 using NUnit.Framework;
 
 namespace PowerPrefs.UnitTests {
-	public class DoublePrefAccessorTest {
+  public class DoublePrefAccessorTest {
 
     private static readonly string TestKey = "someTestKey";
 
@@ -18,8 +18,8 @@ namespace PowerPrefs.UnitTests {
       PlayerPrefs.DeleteAll();
     }
 
-		[Test]
-		public void GivenValueStored_WhenGet_ThenValue() {
+    [Test]
+    public void GivenValueStored_WhenGet_ThenValue() {
       double expected = 10;
       PlayerPrefs.SetString(TestKey, expected.ToString());
 
@@ -37,8 +37,8 @@ namespace PowerPrefs.UnitTests {
       Assert.That(actual, Is.EqualTo(expected));
     }
 
-		[Test]
-		public void GivenNoDefaultProvidedAndKeyMissing_WhenGet_ThenZero() {
+    [Test]
+    public void GivenNoDefaultProvidedAndKeyMissing_WhenGet_ThenZero() {
       double actual = accessor.Get(TestKey);
 
       Assert.That(actual, Is.EqualTo(0));
@@ -47,7 +47,7 @@ namespace PowerPrefs.UnitTests {
     [Test]
     public void WhenSet_ThenValueStored() {
       double expected = 10;
-      
+
       accessor.Set(TestKey, expected);
 
       double actual = double.Parse(PlayerPrefs.GetString(TestKey, "100"));
@@ -64,6 +64,5 @@ namespace PowerPrefs.UnitTests {
       double actual = double.Parse(PlayerPrefs.GetString(TestKey,"100"));
       Assert.That(actual, Is.EqualTo(expected));
     }
-
   }
 }
