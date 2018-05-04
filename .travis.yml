@@ -1,16 +1,22 @@
-language: objective-c
-osx_image: xcode8.2
-rvm:
-- 2.2
+os: osx
+osx_image: xcode9.2
+language: swift
 
 before_install:
-- chmod a+x ./scripts/*.sh
+- mkdir -p ./scripts/download
+- travis_retry curl -sL -o ./scripts/download/build.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/build.sh
+- travis_retry curl -sL -o ./scripts/download/clean.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/clean.sh
+- travis_retry curl -sL -o ./scripts/download/export-package.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/export-package.sh
+- travis_retry curl -sL -o ./scripts/download/install-unity.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/install-unity.sh
+- travis_retry curl -sL -o ./scripts/download/prepare-release.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/prepare-release.sh
+- travis_retry curl -sL -o ./scripts/download/run-tests.sh https://github.com/andrewlord1990/unity-package-build-script/blob/master/scripts/run-tests.sh
+- chmod a+x ./scripts/*/*.sh
 
 install:
-- travis_retry ./scripts/install-unity.sh
+- travis_retry ./scripts/download/install-unity.sh
 
 script:
-- ./scripts/build.sh PowerPrefs && ./scripts/run-tests.sh PowerPrefs
+- ./scripts/download/build.sh PowerPrefs && ./scripts/download/run-tests.sh PowerPrefs
 
 after_success:
-- ./scripts/export-package.sh AndrewLord PowerPrefs
+- ./scripts/download/export-package.sh AndrewLord PowerPrefs
