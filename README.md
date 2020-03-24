@@ -50,10 +50,6 @@ The classes which read and write values contain instance methods, allowing you t
 
 The public API is fully documented, including code documentation.
 
-## Unity Support
-
-It is developed and tested on Unity 2018.1.
-
 ## Install
 
 You can download the latest version of PowerPrefs [from releases](https://github.com/lordcodes/unity-powerprefs/releases/latest).
